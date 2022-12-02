@@ -1,0 +1,53 @@
+---
+import { Icon } from "astro-icon";
+
+const links = [
+  { href: "/products", title: "Products" },
+  { href: "/about", title: "About Us" },
+  { href: "/contact", title: "Contact" },
+];
+---
+
+<header
+  class="sticky top-0 z-40 mx-auto w-full flex-none bg-green-900"
+  id="header"
+>
+  <div class="mx-auto w-full max-w-6xl py-3 px-4 md:flex md:justify-between">
+    <div class="flex h-[48px] justify-between">
+      <a class="flex items-center text-2xl font-bold text-gray-100" href="/">
+        Astro Testing</a
+      >
+      <div class="flex items-center md:hidden">
+        <button
+          type="button"
+          class="ml-1.5 inline-flex items-center rounded-lg p-2.5 text-sm text-gray-100 transition hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-700"
+          aria-label="Toggle Menu"
+          data-aw-toggle-menu
+        >
+          <Icon name="tabler:menu" class="w-6 h-6" optimize={false} />
+        </button>
+      </div>
+    </div>
+    <nav
+      class="hidden h-[calc(100vh-100px)] w-full items-center overflow-y-auto text-slate-200 md:flex md:h-auto md:w-auto md:overflow-visible"
+      aria-label="Main navigation"
+    >
+      <ul
+        class="flex w-full flex-col pt-8 text-xl md:w-auto md:flex-row md:self-center md:pt-0 md:text-base"
+      >
+        {
+          links.map((link) => (
+            <li>
+              <a
+                class="flex items-center rounded-lg px-4 py-2 text-2xl font-medium transition duration-150 ease-in-out hover:bg-green-800 hover:text-white md:text-lg md:hover:bg-green-900"
+                href={link.href}
+              >
+                {link.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
