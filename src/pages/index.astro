@@ -1,8 +1,52 @@
 ---
-import Hero from "../components/Hero.astro";
+import { Image } from "@astrojs/image/components";
+
+import Hero from "../components/Home/Hero.astro";
 import Layout from "../layouts/Layout.astro";
+
+import forecastIcon from "../assets/images/forecast_icon.webp";
+import noAddsIcon from "../assets/images/noadds_icon.webp";
+import notifyIcon from "../assets/images/notify_icon.webp";
+
+const details = [
+  {
+    title: "Reliable Trusted Forescasts",
+    description:
+      "Our latest in-house weather forecasts, maps and warnings have years of proven reliability!",
+    image: forecastIcon,
+  },
+  {
+    title: "Be The First To Know",
+    description:
+      "Emailed warnings for QLD, NSW, ACT  & VIC with Tropical Cyclone map Australia wide!",
+    image: notifyIcon,
+  },
+  {
+    title: "Advertisement Free",
+    description: "No advertisements, no extra fees, cancel at anytime!",
+    image: noAddsIcon,
+  },
+];
 ---
 
 <Layout title="Welcome to Astro.">
   <Hero />
+
+  <section
+    class="flex flex-col items-center bg-gradient-to-b from-yellow-200 to-yellow-400 py-12 xl:flex-row"
+  >
+    {
+      details.map((detail) => (
+        <div class="my-4 mx-16 flex w-full flex-col items-center px-4 text-center md:flex-row md:text-start xl:m-0 xl:w-1/3 xl:items-start">
+          <Image src={detail.image} alt={detail.title} width={144} />
+          <div class="my-4 ml-8 xl:my-0">
+            <h4 class="mb-2 text-3xl font-bold text-blue-800 xl:text-2xl">
+              {detail.title}
+            </h4>
+            <p class="font-semibold text-gray-700">{detail.description}</p>
+          </div>
+        </div>
+      ))
+    }
+  </section>
 </Layout>
