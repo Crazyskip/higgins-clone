@@ -1,0 +1,65 @@
+---
+import { Icon } from "astro-icon";
+
+import { Image } from "@astrojs/image/components";
+
+import logo from "../assets/images/higgins_logo-min.webp";
+---
+
+<section
+  class="hero flex w-full flex-col px-4 py-14 text-center text-white md:flex-row md:items-center md:justify-between md:px-6 md:text-left lg:px-10 xl:px-24"
+>
+  <div>
+    <h1 class="mb-3 text-[40px] font-bold uppercase leading-[40px]">
+      Higgins Storm Chasing
+    </h1>
+    <h2 class="text-xl uppercase">Forecasts - Warnings - Observations</h2>
+
+    <div class="mt-8">
+      <h1 class="text-[27px]">Advanced Weather Service</h1>
+      <h2 class="text-lg">Available for QLD, NSW, ACT & VIC!</h2>
+    </div>
+
+    <div class="my-8 ml-4 flex justify-center md:justify-start">
+      <Icon
+        name="fa-solid:quote-right"
+        class="w-6 h-6 text-gray-300"
+        optimize={false}
+      />
+      <h5 class="ml-4 text-start text-xl">
+        Every day you will "know" the weather...
+      </h5>
+    </div>
+    <a
+      href="#"
+      class="subscribe mx-auto flex w-full items-center justify-center bg-blue-800 py-3 px-4 text-lg font-semibold hover:bg-blue-700"
+      ><Icon
+        name="mdi:bell"
+        class="inline-block md:hidden mr-4 w-6 h-6 text-gray-300"
+        optimize={false}
+      />Subscribe To Our Weather Service <Icon
+        name="mdi:bell"
+        class="inline-block ml-4 w-6 h-6 text-gray-300"
+        optimize={false}
+      />
+    </a>
+  </div>
+  <div class="my-6 mx-auto w-[256px] md:mx-0 md:w-[192px] lg:my-0 lg:w-[256px]">
+    <Image
+      src={logo}
+      width={256}
+      alt="Logo"
+      class="opacity-60 hover:opacity-100 transition-opacity duration-300"
+    />
+  </div>
+</section>
+<style>
+  .hero {
+    background: url("/images/clouds-hero.webp");
+    background-position: bottom;
+  }
+
+  .subscribe {
+    max-width: 540px;
+  }
+</style>

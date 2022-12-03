@@ -1,26 +1,34 @@
 ---
 import { Icon } from "astro-icon";
 
+import { Image } from "@astrojs/image/components";
+
+import Logo from "../assets/images/higgins_logo-min.webp";
+
 const links = [
-  { href: "/products", title: "Products" },
-  { href: "/about", title: "About Us" },
-  { href: "/contact", title: "Contact" },
+  { href: "/", title: "Home" },
+  { href: "/products", title: "Higgins Public TV" },
+  { href: "/about", title: "News and Forcasts" },
+  { href: "/contact", title: "Premium Portal" },
+  { href: "/contact", title: "Live Weather Data" },
+  { href: "/contact", title: "Merch" },
+  { href: "/contact", title: "My Account" },
 ];
 ---
 
 <header
-  class="sticky top-0 z-40 mx-auto w-full flex-none bg-green-900"
+  class="sticky top-0 z-40 mx-auto w-full flex-none bg-gray-800 px-2"
   id="header"
 >
-  <div class="mx-auto w-full max-w-6xl py-3 px-4 md:flex md:justify-between">
-    <div class="flex h-[48px] justify-between">
+  <div class="mx-auto w-full py-3 px-2 lg:flex lg:justify-between xl:px-4">
+    <div class="flex h-[64px] justify-between">
       <a class="flex items-center text-2xl font-bold text-gray-100" href="/">
-        Astro Testing</a
-      >
-      <div class="flex items-center md:hidden">
+        <Image src={Logo} width={144} alt="Logo" class="h-full w-auto" />
+      </a>
+      <div class="flex items-center lg:hidden">
         <button
           type="button"
-          class="ml-1.5 inline-flex items-center rounded-lg p-2.5 text-sm text-gray-100 transition hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-700"
+          class="ml-1.5 inline-flex items-center rounded-lg p-2.5 text-sm text-gray-100 transition hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-600"
           aria-label="Toggle Menu"
           data-aw-toggle-menu
         >
@@ -29,17 +37,17 @@ const links = [
       </div>
     </div>
     <nav
-      class="hidden h-[calc(100vh-100px)] w-full items-center overflow-y-auto text-slate-200 md:flex md:h-auto md:w-auto md:overflow-visible"
+      class="hidden h-[calc(100vh-100px)] w-full items-center overflow-y-auto text-white lg:flex lg:h-auto lg:w-auto lg:overflow-visible"
       aria-label="Main navigation"
     >
       <ul
-        class="flex w-full flex-col pt-8 text-xl md:w-auto md:flex-row md:self-center md:pt-0 md:text-base"
+        class="flex w-full flex-col pt-8 text-xl lg:w-auto lg:flex-row lg:self-center lg:pt-0 lg:text-base"
       >
         {
           links.map((link) => (
-            <li>
+            <li class="border-b-[1px] border-gray-100 lg:border-none">
               <a
-                class="flex items-center rounded-lg px-4 py-2 text-2xl font-medium transition duration-150 ease-in-out hover:bg-green-800 hover:text-white md:text-lg md:hover:bg-green-900"
+                class="flex items-center rounded-lg px-4 py-3 text-xl font-medium transition duration-150 ease-in-out hover:text-yellow-400 lg:text-base lg:hover:text-gray-300 xl:px-6 2xl:px-8"
                 href={link.href}
               >
                 {link.title}
