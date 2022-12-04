@@ -8,6 +8,12 @@ import forecastIcon from "../assets/images/forecast_icon.webp";
 import noAddsIcon from "../assets/images/noadds_icon.webp";
 import notifyIcon from "../assets/images/notify_icon.webp";
 
+import stormMap from "../assets/images/storm_map.webp";
+import rainMap from "../assets/images/rain_map.webp";
+import floodMap from "../assets/images/flood_map.webp";
+import snowMap from "../assets/images/snow_map.webp";
+import cycloneMap from "../assets/images/cyclone_map.webp";
+
 const details = [
   {
     title: "Reliable Trusted Forescasts",
@@ -27,19 +33,29 @@ const details = [
     image: noAddsIcon,
   },
 ];
+
+const maps = [
+  { title: "Thunderstorm Risk Maps", image: stormMap },
+  { title: "24hr, 7 Day & 30 Day Rain Maps", image: rainMap },
+  { title: "Flood Risk Maps", image: floodMap },
+  { title: "Snow Maps", image: snowMap },
+  { title: "Temperature Maps", image: rainMap },
+  { title: "Cyclone Track & Intensity Maps", image: cycloneMap },
+];
 ---
 
 <Layout title="Welcome to Astro.">
   <Hero />
 
+  <!-- Details -->
   <section
-    class="flex flex-col items-center bg-gradient-to-b from-yellow-200 to-yellow-400 py-12 xl:flex-row"
+    class="flex flex-col items-center bg-gradient-to-b from-orange-300 to-yellow-400 py-12 px-6 lg:px-10 xl:flex-row xl:items-start"
   >
     {
       details.map((detail) => (
-        <div class="my-4 mx-16 flex w-full flex-col items-center px-4 text-center md:flex-row md:text-start xl:m-0 xl:w-1/3 xl:items-start">
+        <div class="my-4 flex w-full flex-col items-center text-center md:flex-row md:text-start xl:m-0 xl:w-1/3 xl:items-start xl:px-4">
           <Image src={detail.image} alt={detail.title} width={144} />
-          <div class="my-4 ml-8 xl:my-0">
+          <div class="my-4 md:ml-6 xl:my-0">
             <h4 class="mb-2 text-3xl font-bold text-blue-800 xl:text-2xl">
               {detail.title}
             </h4>
@@ -48,5 +64,27 @@ const details = [
         </div>
       ))
     }
+  </section>
+
+  <!-- What's Included -->
+  <section
+    class="my-10 flex flex-wrap justify-center px-8 text-center text-blue-800 md:px-2 lg:px-4"
+  >
+    <div class="mb-4 flex flex-col">
+      <span class="my-2 text-sm font-semibold uppercase">What's Included</span>
+      <h4 class="my-2 text-4xl font-bold tracking-tight">
+        Premium Forecasts & Warnings
+      </h4>
+    </div>
+    <div class="flex flex-wrap">
+      {
+        maps.map((map) => (
+          <div class="my-6 md:w-1/2 md:px-4 lg:px-6 xl:w-1/3">
+            <h4 class="my-2 text-2xl font-bold md:text-xl">{map.title}</h4>
+            <Image src={map.image} alt={map.title} width={800} />
+          </div>
+        ))
+      }
+    </div>
   </section>
 </Layout>
