@@ -1,0 +1,74 @@
+---
+import { Icon } from "astro-icon";
+
+const footerSections = [
+  {
+    title: "General Information",
+    links: [
+      { title: "About Higgins Storm Chasing", href: "/about" },
+      { title: "Higgins Shop FAQ", href: "#" },
+      {
+        title: "Terms of Use, Disclaimer, Return and Refund Policies",
+        href: "#",
+      },
+      { title: "Privacy Policy", href: "#" },
+    ],
+  },
+  {
+    title: "Weather Services",
+    links: [
+      { title: "Weather Subscription", href: "#" },
+      { title: "IOS Application", href: "#" },
+      { title: "Android Application", href: "#" },
+      {
+        title: "Facebook Fan Page",
+        href: "https://www.facebook.com/139175562844906/support/",
+      },
+    ],
+  },
+  {
+    title: "Contact Us",
+    links: [
+      { title: "Email the team", href: "mailto:admin@higginsstormchasing.com" },
+    ],
+  },
+];
+---
+
+<footer class="bg-gray-800">
+  <div
+    class="mx-auto flex max-w-[1200px] flex-col p-8 lg:flex-row lg:justify-between"
+  >
+    {
+      footerSections.map((section) => (
+        <div class="my-3 mx-2 max-w-xs">
+          <h5 class="text-2xl font-bold text-yellow-300">{section.title}</h5>
+          <div class="my-1 flex flex-col text-gray-300">
+            {section.links.map((link) => (
+              <a href={link.href} class="py-2 font-semibold hover:underline">
+                {link.title}
+              </a>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+    <div class="my-3 mx-2 max-w-xs">
+      <h5 class="text-2xl font-bold text-yellow-300">Social Media</h5>
+      <div class="my-1 flex py-2 text-gray-300">
+        <a href="https://www.facebook.com/HigginsStormChasing/">
+          <Icon name="mdi:facebook-box" class="mr-1 w-10 h-10" />
+        </a>
+        <a href="https://www.instagram.com/higginsstormchasing/">
+          <Icon name="mdi:instagram" class="ml-1 w-10 h-10" />
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="bg-gray-700 py-1 text-center">
+    <p class="text-sm text-gray-400">
+      &copy;Higgins Storm Chasing &reg;|We Chase Pty Ltd|ABN: 80 646 198
+      398|2010-2022
+    </p>
+  </div>
+</footer>
