@@ -14,6 +14,8 @@ import floodMap from "../assets/images/flood_map.webp";
 import snowMap from "../assets/images/snow_map.webp";
 import cycloneMap from "../assets/images/cyclone_map.webp";
 
+import supportImage from "../assets/images/support_image.webp";
+
 const details = [
   {
     title: "Reliable Trusted Forescasts",
@@ -86,5 +88,28 @@ const maps = [
         ))
       }
     </div>
+  </section>
+
+  <!-- Support Local -->
+  <section
+    class="flex flex-col items-center px-6 text-center lg:flex-row lg:px-10"
+  >
+    <div class="mb-8 px-2 sm:px-12 md:w-3/4 lg:mb-0 lg:w-1/2 lg:px-8">
+      <div class="mb-4 flex flex-col text-blue-800">
+        <span class="my-2 text-sm font-semibold uppercase">Support Local</span>
+        <h4 class="my-2 text-4xl font-bold tracking-tight">Australian Owned</h4>
+      </div>
+      <p class="mx-auto font-semibold tracking-tight text-gray-600 lg:max-w-xl">
+        You're not just subscribing to best weather information with big bang
+        for buck, you're also supporting an Australian owned, hard working,
+        passionate and dedicated small company.
+      </p>
+    </div>
+    <Image
+      src={supportImage}
+      alt="support"
+      width={760}
+      class="w-full lg:w-1/2"
+    />
   </section>
 </Layout>
