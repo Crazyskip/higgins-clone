@@ -1,0 +1,55 @@
+---
+import { Image } from "@astrojs/image/components";
+
+import telcoLogo from "../../assets/images/sponsors/telco_antennas_logo.webp";
+import teralumeLogo from "../../assets/images/sponsors/teralume_logo.webp";
+import completeTaxLogo from "../../assets/images/sponsors/complete_tax_logo.webp";
+import caravanRepairLogo from "../../assets/images/sponsors/caravan_repair_logo.webp";
+import stickermanLogo from "../../assets/images/sponsors/stickerman_logo.webp";
+
+const sponsors = [
+  {
+    title: "Teralume Industries Logo",
+    link: "https://teralumeindustries.com",
+    logo: teralumeLogo,
+  },
+  {
+    title: "Complete Logo",
+    link: "https://completetfs.com.au",
+    logo: completeTaxLogo,
+  },
+  {
+    title: "Caravan Repair Logo",
+    link: "https://caravanrepaircentre.com.au",
+    logo: caravanRepairLogo,
+  },
+  {
+    title: "Telco Antennas Logo",
+    link: "https://www.telcoantennas.com.au",
+    logo: telcoLogo,
+  },
+  {
+    title: "Calcoundra Stickerman Logo",
+    link: "https://www.stickermancaloundra.com.au",
+    logo: stickermanLogo,
+  },
+];
+---
+
+<section
+  class="flex flex-col items-center bg-gradient-to-b from-orange-300 to-yellow-400 py-6 px-6 lg:px-10"
+>
+  <h4 class="my-2 text-center text-2xl font-bold tracking-tight text-blue-800">
+    Our Trusted Sponsors - Be Sure To Check Out Their Products Backed With Great
+    Service!
+  </h4>
+  <div class="flex flex-wrap justify-center">
+    {
+      sponsors.map((sponsor) => (
+        <a href={sponsor.link} class="mx-4 py-0 sm:p-2">
+          <Image src={sponsor.logo} alt={sponsor.title} width={240} />
+        </a>
+      ))
+    }
+  </div>
+</section>

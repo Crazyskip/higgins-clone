@@ -1,8 +1,9 @@
 ---
 import { Image } from "@astrojs/image/components";
 
-import Hero from "../components/Home/Hero.astro";
 import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Home/Hero.astro";
+import Sponsors from "../components/Home/Sponsors.astro";
 
 import forecastIcon from "../assets/images/forecast_icon.webp";
 import noAddsIcon from "../assets/images/noadds_icon.webp";
@@ -92,7 +93,7 @@ const maps = [
 
   <!-- Support Local -->
   <section
-    class="flex flex-col items-center px-6 text-center lg:flex-row lg:px-10"
+    class="mb-16 flex flex-col items-center px-6 text-center lg:flex-row lg:px-10"
   >
     <div class="mb-8 px-2 sm:px-12 md:w-3/4 lg:mb-0 lg:w-1/2 lg:px-8">
       <div class="mb-4 flex flex-col text-blue-800">
@@ -112,4 +113,6 @@ const maps = [
       class="w-full lg:w-1/2"
     />
   </section>
+
+  <Sponsors />
 </Layout>
