@@ -1,0 +1,77 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import seqImage from "../assets/images/portal/seq_portal.webp";
+import nswImage from "../assets/images/portal/nsw_portal.webp";
+import climateImage from "../assets/images/portal/climate_portal.webp";
+import cyclonesImage from "../assets/images/portal/cyclones_portal.webp";
+
+const sections = [
+  {
+    title: "South East QLD & Queensland",
+    image: seqImage,
+    links: [
+      { title: "South East QLD Daily Forecast", href: "#" },
+      { title: "QLD State Daily Forecast", href: "#" },
+      { title: "SEQ & QLD State 7 Day Forecast", href: "#" },
+      { title: "QLD State 1 Month Outlook", href: "#" },
+      { title: "QLD State 3 Month Outlook", href: "#" },
+    ],
+  },
+  {
+    title: "North East NSW & NSW ACT & VIC",
+    image: nswImage,
+    links: [
+      { title: "North East NSW Daily Forecast", href: "#" },
+      { title: "NSW, ACT & VIC Daily Forecast", href: "#" },
+      { title: "NENSW, NSW, ACT & VIC 7 Day Forecast", href: "#" },
+      { title: "NSW, ACT & VIC 1 Month Outlook", href: "#" },
+      { title: "NSW, ACT & VIC 3 Month Outlook", href: "#" },
+    ],
+  },
+  {
+    title: "Climate Drivers & Long Range",
+    image: climateImage,
+    links: [
+      { title: "La Nina / El Nino, Indian Ocean & SOI", href: "#" },
+      { title: "3-6 Month Rain & Temperature (Raw Data Maps)", href: "#" },
+      { title: "WA, SA, NT & TAS Forecasts", href: "#" },
+    ],
+  },
+  {
+    title: "Tropical Lows & Cyclones",
+    image: cyclonesImage,
+    links: [
+      { title: "Australia wide watch areas for Lows & Cyclones", href: "#" },
+      {
+        title:
+          "Active cyclones with tracking maps, intensity and full forecast",
+        href: "#",
+      },
+      { title: "2022 / 23 Seasonal Outlook", href: "#" },
+    ],
+  },
+];
+---
+
+<Layout title="Members Portal |  Higgins Storm Chasing">
+  <section>
+    <h1>Members Portal Home Page</h1>
+  </section>
+  <section class="my-4">
+    {
+      sections.map((section) => (
+        <div class="mx-4">
+          <h1>{section.title}</h1>
+          {section.links.map((link) => (
+            <div class="mx-4">
+              <a href={link.href} class="text-blue-500">
+                - {link.title}
+              </a>
+            </div>
+          ))}
+        </div>
+      ))
+    }
+  </section>
+</Layout>
