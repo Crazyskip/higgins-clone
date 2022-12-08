@@ -1,16 +1,15 @@
 ---
-import { Image } from "@astrojs/image/components";
 import { Icon } from "astro-icon";
 
 import Layout from "../layouts/Layout.astro";
 
-import appStoreIcon from "../assets/images/app_store_icon.webp";
-import playStoreIcon from "../assets/images/play_store_icon.webp";
+import appStoreIcon from "../assets/images/app_store_icon.svg";
+import playStoreIcon from "../assets/images/play_store_icon.svg";
 
-import seqImage from "../assets/images/portal/seq_portal.webp";
-import nswImage from "../assets/images/portal/nsw_portal.webp";
-import climateImage from "../assets/images/portal/climate_portal.webp";
-import cyclonesImage from "../assets/images/portal/cyclones_portal.webp";
+const seqImage = "/images/portal/seq_portal.webp";
+const nswImage = "/images/portal/nsw_portal.webp";
+const climateImage = "/images/portal/climate_portal.webp";
+const cyclonesImage = "/images/portal/cyclones_portal.webp";
 
 const sections = [
   {
@@ -97,23 +96,25 @@ const sections = [
         Download our new free Higgins Weather app by clicking on the Apple or
         Google links below.
       </p>
-      <div class="mt-2 flex flex-row flex-wrap">
+      <div class="mt-2 flex flex-wrap justify-around md:justify-start">
         <a href="https://apps.apple.com/au/app/higgins-weather/id1623633649">
-          <Image
+          <img
             src={appStoreIcon}
+            width="216"
+            height="64"
             alt="Apple App Store"
-            width={250}
-            class="my-2 mx-2 w-48 sm:w-auto"
+            class="mx-2 my-2 h-16"
           />
         </a>
         <a
           href="https://play.google.com/store/apps/details?id=com.higginsstormchasing.app"
         >
-          <Image
+          <img
             src={playStoreIcon}
+            width="216"
+            height="64"
             alt="Google Play Store"
-            width={250}
-            class="my-2 mx-2 w-48 sm:w-auto"
+            class="mx-2 my-2 h-16"
           />
         </a>
       </div>
@@ -122,10 +123,11 @@ const sections = [
       {
         sections.map((section) => (
           <div class="my-4 mx-2 rounded-lg bg-gray-900">
-            <Image
+            <img
               src={section.image}
               alt=""
-              width={500}
+              width="500"
+              height="300"
               class="w-full rounded-t-lg object-cover"
             />
             <div class="mx-3 mt-2 mb-4">
