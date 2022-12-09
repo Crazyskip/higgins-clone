@@ -1,0 +1,76 @@
+---
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { BLOCKS, Node } from "@contentful/rich-text-types";
+import type { Entry } from "contentful";
+import Layout from "../../layouts/Layout.astro";
+import { contentfulClient, Post, Region } from "../../lib/contentful";
+
+export async function getStaticPaths() {
+  const regionEntries = await contentfulClient.getEntries<Region>({
+    content_type: "region",
+  });
+
+  const postEntries = await contentfulClient.getEntries<Post>({
+    content_type: "post",
+  });
+
+  const pages = regionEntries.items.map((item) => ({
+    params: { slug: item.fields.slug },
+    props: {
+      title: item.fields.title,
+      posts: postEntries.items.filter(
+        (post) => post.fields.region.fields.slug === item.fields.slug
+      ),
+    },
+  }));
+
+  return pages;
+}
+
+interface Props {
+  title: string;
+  posts: Entry<Post>[];
+}
+
+const { title, posts } = Astro.props;
+
+const options = {
+  renderNode: {
+    [BLOCKS.PARAGRAPH]: (node: any, next: any) =>
+      `<p class="my-6">${next(node.content)}</p>`,
+
+    [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
+      const { file, title } = node.data.target.fields;
+      return `<img src=${`https:${file.url}`} alt="${title}" class="my-4" />`;
+    },
+  },
+};
+---
+
+<Layout title={`${title} |  Higgins Storm Chasing`}>
+  <div class="mx-auto max-w-5xl py-8 px-4">
+    <h1 class="mb-4 text-3xl font-bold">{title}</h1>
+    <hr />
+    <div>
+      {
+        posts.map((post) => (
+          <div class="mb-12 mt-6">
+            <h2 class="text-xl font-bold">{post.fields.title}</h2>
+            <article
+              class="post"
+              set:html={documentToHtmlString(post.fields.body, options)}
+            />
+            <hr />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Layout>
+<style lang="scss">
+  hr {
+    border: none;
+    height: 2px;
+    background-color: #666;
+  }
+</style>

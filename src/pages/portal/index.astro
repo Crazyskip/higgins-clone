@@ -1,10 +1,10 @@
 ---
 import { Icon } from "astro-icon";
 
-import Layout from "../layouts/Layout.astro";
+import Layout from "../../layouts/Layout.astro";
 
-import appStoreIcon from "../assets/images/app_store_icon.svg";
-import playStoreIcon from "../assets/images/play_store_icon.svg";
+import appStoreIcon from "../../assets/images/app_store_icon.svg";
+import playStoreIcon from "../../assets/images/play_store_icon.svg";
 
 const seqImage = "/images/portal/seq_portal.webp";
 const nswImage = "/images/portal/nsw_portal.webp";
@@ -16,11 +16,26 @@ const sections = [
     title: "South East QLD & Queensland",
     image: seqImage,
     links: [
-      { title: "South East QLD Daily Forecast", href: "#" },
-      { title: "QLD State Daily Forecast", href: "#" },
-      { title: "SEQ & QLD State 7 Day Forecast", href: "#" },
-      { title: "QLD State 1 Month Outlook", href: "#" },
-      { title: "QLD State 3 Month Outlook", href: "#" },
+      {
+        title: "South East QLD Daily Forecast",
+        href: "/portal/south-east-queensland-daily-forecast",
+      },
+      {
+        title: "QLD State Daily Forecast",
+        href: "/portal/queensland-state-forecast",
+      },
+      {
+        title: "SEQ & QLD State 7 Day Forecast",
+        href: "/portal/queensland-7-day-forecast",
+      },
+      {
+        title: "QLD State 1 Month Outlook",
+        href: "/portal/queensland-1-month-rainfall-temperature-outlook",
+      },
+      {
+        title: "QLD State 3 Month Outlook",
+        href: "/portal/queensland-long-range-outlook",
+      },
     ],
   },
   {
