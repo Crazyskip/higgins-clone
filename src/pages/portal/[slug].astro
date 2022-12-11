@@ -1,9 +1,10 @@
 ---
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
-import { BLOCKS, Node } from "@contentful/rich-text-types";
+import { BLOCKS } from "@contentful/rich-text-types";
 import type { Entry } from "contentful";
 import Layout from "../../layouts/Layout.astro";
 import { contentfulClient, Post, Region } from "../../lib/contentful";
+import { Image } from "@astrojs/image/components";
 
 export async function getStaticPaths() {
   const regionEntries = await contentfulClient.getEntries<Region>({
@@ -12,6 +13,7 @@ export async function getStaticPaths() {
 
   const postEntries = await contentfulClient.getEntries<Post>({
     content_type: "post",
+    order: "fields.date,sys.createdAt",
   });
 
   const pages = regionEntries.items.map((item) => ({
@@ -39,9 +41,15 @@ const options = {
     [BLOCKS.PARAGRAPH]: (node: any, next: any) =>
       `<p class="my-6">${next(node.content)}</p>`,
 
+    [BLOCKS.HEADING_2]: (node: any, next: any) =>
+      `<h2 class="text-xl font-bold mt-2">${next(node.content)}</h2>`,
+
+    [BLOCKS.HEADING_3]: (node: any, next: any) =>
+      `<h3 class="text-lg font-bold mb-[-12px]">${next(node.content)}</h3>`,
+
     [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
       const { file, title } = node.data.target.fields;
-      return `<img src=${`https:${file.url}`} alt="${title}" class="my-4" />`;
+      return `<Image src=${`https:${file.url}?fm=webp&w=1200`} width="1200" height="917" alt="${title}" class="my-4" />`;
     },
   },
 };
@@ -54,7 +62,7 @@ const options = {
     <div>
       {
         posts.map((post) => (
-          <div class="mb-12 mt-6">
+          <div class="mb-10 mt-6">
             <h2 class="text-xl font-bold">{post.fields.title}</h2>
             <article
               class="post"
@@ -66,11 +74,12 @@ const options = {
       }
     </div>
   </div>
+
+  <style lang="scss">
+    hr {
+      border: none;
+      height: 2px;
+      background-color: #666;
+    }
+  </style>
 </Layout>
-<style lang="scss">
-  hr {
-    border: none;
-    height: 2px;
-    background-color: #666;
-  }
-</style>
