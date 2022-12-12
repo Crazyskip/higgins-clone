@@ -4,7 +4,6 @@ import { BLOCKS } from "@contentful/rich-text-types";
 import type { Entry } from "contentful";
 import Layout from "../../layouts/Layout.astro";
 import { contentfulClient, Post, Region } from "../../lib/contentful";
-import { Image } from "@astrojs/image/components";
 
 export async function getStaticPaths() {
   const regionEntries = await contentfulClient.getEntries<Region>({
@@ -49,7 +48,10 @@ const options = {
 
     [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
       const { file, title } = node.data.target.fields;
-      return `<Image src=${`https:${file.url}?fm=webp&w=1200`} width="1200" height="917" alt="${title}" class="my-4" />`;
+      const { width, height } = file.details.image;
+      return `<img src=${`https:${file.url}?fm=webp&w=1280`} width="1280" height=${Math.round(
+        height * (1280 / width)
+      )} alt="${title}" class="my-4 mx-auto" />`;
     },
   },
 };

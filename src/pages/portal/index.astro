@@ -10,6 +10,8 @@ const seqImage = "/images/portal/seq_portal.webp";
 const nswImage = "/images/portal/nsw_portal.webp";
 const climateImage = "/images/portal/climate_portal.webp";
 const cyclonesImage = "/images/portal/cyclones_portal.webp";
+const settingsImage = "/images/portal/settings_portal.webp";
+const MemberTVImage = "/images/portal/youtube_portal.webp";
 
 const sections = [
   {
@@ -42,59 +44,81 @@ const sections = [
     title: "North East NSW & NSW ACT & VIC",
     image: nswImage,
     links: [
-      { title: "North East NSW Daily Forecast", href: "#" },
-      { title: "NSW, ACT & VIC Daily Forecast", href: "#" },
-      { title: "NENSW, NSW, ACT & VIC 7 Day Forecast", href: "#" },
-      { title: "NSW, ACT & VIC 1 Month Outlook", href: "#" },
-      { title: "NSW, ACT & VIC 3 Month Outlook", href: "#" },
+      {
+        title: "North East NSW Daily Forecast",
+        href: "/portal/north-east-nsw-daily-forecast",
+      },
+      {
+        title: "NSW, ACT & VIC Daily Forecast",
+        href: "/portal/nsw-act-vic-daily-forecast",
+      },
+      {
+        title: "NENSW, NSW, ACT & VIC 7 Day Forecast",
+        href: "/portal/nensw-nsw-act-vic-7-day-forecast",
+      },
+      {
+        title: "NSW, ACT & VIC 1 Month Outlook",
+        href: "/portal/nsw-act-vic-1-month-outlook",
+      },
+      {
+        title: "NSW, ACT & VIC 3 Month Outlook",
+        href: "/portal/nsw-act-vic-3-month-outlook",
+      },
+    ],
+  },
+  {
+    title: "Tropical Lows & Cyclones",
+    image: cyclonesImage,
+    links: [
+      {
+        title: "Australia wide watch areas for Lows & Cyclones",
+        href: "/portal/tropical-cyclones",
+      },
+      {
+        title:
+          "Active cyclones with tracking maps, intensity and full forecast",
+        href: "/portal/tropical-cyclones",
+      },
+      {
+        title: "2022 / 23 Seasonal Outlook",
+        href: "/portal/tropical-cyclones",
+      },
     ],
   },
   {
     title: "Climate Drivers & Long Range",
     image: climateImage,
     links: [
-      { title: "La Nina / El Nino, Indian Ocean & SOI", href: "#" },
-      { title: "3-6 Month Rain & Temperature (Raw Data Maps)", href: "#" },
-      { title: "WA, SA, NT & TAS Forecasts", href: "#" },
+      {
+        title: "La Nina / El Nino, Indian Ocean & SOI",
+        href: "/portal/climate",
+      },
+      {
+        title: "3-6 Month Rain & Temperature (Raw Data Maps)",
+        href: "/portal/6-month-outlooks",
+      },
+    ],
+  },
+
+  {
+    title: "Subscription Settings",
+    image: settingsImage,
+    links: [
+      { title: "Subscription details", href: "#" },
+      {
+        title: "Email alerts and Warning settings",
+        href: "#",
+      },
     ],
   },
   {
-    title: "Tropical Lows & Cyclones",
-    image: cyclonesImage,
+    title: "Higgins Members TV",
+    image: MemberTVImage,
     links: [
-      { title: "Australia wide watch areas for Lows & Cyclones", href: "#" },
       {
-        title:
-          "Active cyclones with tracking maps, intensity and full forecast",
-        href: "#",
+        title: "Video Forecasts For Significant / Severe Weather",
+        href: "/portal/higgins-members-tv",
       },
-      { title: "2022 / 23 Seasonal Outlook", href: "#" },
-    ],
-  },
-  {
-    title: "Tropical Lows & Cyclones",
-    image: cyclonesImage,
-    links: [
-      { title: "Australia wide watch areas for Lows & Cyclones", href: "#" },
-      {
-        title:
-          "Active cyclones with tracking maps, intensity and full forecast",
-        href: "#",
-      },
-      { title: "2022 / 23 Seasonal Outlook", href: "#" },
-    ],
-  },
-  {
-    title: "Tropical Lows & Cyclones",
-    image: cyclonesImage,
-    links: [
-      { title: "Australia wide watch areas for Lows & Cyclones", href: "#" },
-      {
-        title:
-          "Active cyclones with tracking maps, intensity and full forecast",
-        href: "#",
-      },
-      { title: "2022 / 23 Seasonal Outlook", href: "#" },
     ],
   },
 ];
