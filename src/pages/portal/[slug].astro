@@ -1,6 +1,6 @@
 ---
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
-import { BLOCKS } from "@contentful/rich-text-types";
+import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import type { Entry } from "contentful";
 import Layout from "../../layouts/Layout.astro";
 import { contentfulClient, Post, Region } from "../../lib/contentful";
@@ -53,6 +53,14 @@ const options = {
         height * (1280 / width)
       )} alt="${title}" class="my-4 mx-auto" />`;
     },
+    [INLINES.EMBEDDED_ENTRY]: (node: any) => {
+      const { title, url } = node.data.target.fields;
+      const id = url.split("v=")[1];
+      return `
+      <div class="w-full my-4">
+        <lite-youtube videoid=${id} videotitle=${title} posterloading="eager" nocookie="true" />
+      </div>`;
+    },
   },
 };
 ---
@@ -63,16 +71,23 @@ const options = {
     <hr />
     <div>
       {
-        posts.map((post) => (
-          <div class="mb-10 mt-6">
-            <h2 class="text-xl font-bold">{post.fields.title}</h2>
-            <article
-              set:html={documentToHtmlString(post.fields.body, options)}
-            />
-            <hr />
-          </div>
-        ))
+        posts.map((post) => {
+          return (
+            <div class="mb-10 mt-6">
+              <h2 class="text-xl font-bold">{post.fields.title}</h2>
+              <article
+                set:html={documentToHtmlString(post.fields.body, options)}
+              />
+              <hr />
+            </div>
+          );
+        })
       }
     </div>
   </div>
 </Layout>
+
+<script
+  type="module"
+  src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.4.0/lite-youtube.js"
+></script>
