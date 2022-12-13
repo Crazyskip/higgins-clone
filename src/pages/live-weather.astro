@@ -1,0 +1,64 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import { Icon } from "astro-icon";
+
+const sites = [
+  {
+    title: "Radar & Lightning",
+    link: "https://www.windy.com/-Weather-radar-radar?radar,-27.975,134.033,5",
+    icon: "ic:baseline-thunderstorm",
+  },
+  {
+    title: "Current Temperature",
+    link: "https://www.windy.com/-Temperature-temp?temp,-27.975,134.033,5,i:temp",
+    icon: "ic:baseline-device-thermostat",
+  },
+  {
+    title: "Winds",
+    link: "https://www.windy.com/?-27.975,134.033,5,i:temp",
+    icon: "bi:wind",
+  },
+  {
+    title: "Satellite",
+    link: "https://www.windy.com/-Satellite-satellite?satellite,-27.975,134.033,5",
+    icon: "ic:baseline-cloud",
+  },
+  {
+    title: "Warnings",
+    link: "http://reg.bom.gov.au/australia/warnings/index.shtml",
+    icon: "ic:baseline-report-problem",
+  },
+];
+---
+
+<Layout title="Live Weather Data | Higgins Storm Chasing">
+  <div class="mx-auto max-w-screen-2xl px-2">
+    <section class="px-6 pt-8">
+      <h1 class="text-3xl font-bold">Live Weather Data</h1>
+      <p class="mt-3 text-lg text-gray-600">
+        Access live weather maps and warnings through the links below.
+      </p>
+    </section>
+    <section
+      class="mt-4 grid grid-cols-1 sm:px-4 md:grid-cols-2 xl:grid-cols-3"
+    >
+      {
+        sites.map((site) => (
+          <div class="my-2 h-24 w-full px-2">
+            <a
+              href={site.link}
+              target="_blank"
+              class="flex h-full w-full items-center justify-between bg-blue-700 px-4 hover:bg-blue-600"
+            >
+              <Icon name={site.icon} class="h-14 w-14 text-white" />
+              <h2 class="mx-4 text-right text-xl font-semibold text-gray-50">
+                {site.title}
+              </h2>
+            </a>
+          </div>
+        ))
+      }
+    </section>
+  </div>
+</Layout>
