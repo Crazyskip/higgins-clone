@@ -67,7 +67,6 @@ const options = {
           <div class="mb-10 mt-6">
             <h2 class="text-xl font-bold">{post.fields.title}</h2>
             <article
-              class="post"
               set:html={documentToHtmlString(post.fields.body, options)}
             />
             <hr />
@@ -76,12 +75,4 @@ const options = {
       }
     </div>
   </div>
-
-  <style lang="scss">
-    hr {
-      border: none;
-      height: 2px;
-      background-color: #666;
-    }
-  </style>
 </Layout>

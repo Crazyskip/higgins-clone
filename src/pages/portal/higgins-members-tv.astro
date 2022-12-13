@@ -1,0 +1,51 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const videos = [
+  {
+    title: "Rain & Storms Returning for QLD",
+    id: "tgk2mYFcfZQ",
+    details:
+      "A week of wild weather is expected to recommence across QLD after a November lull - with rain & storms most days, a tropical low possibly developing and a rain convergence zone possibly developing. Issued November 26 2022 – Valid for November 27 to December 2 2022. ",
+  },
+  {
+    title: "East Coast Low to bring impact SEQLD & NENSW",
+    id: "eCxHvIhHSWs",
+    details:
+      "An East Coast Low is forecast to produce very heavy rainfall across SEQLD & into NENSW between Friday October 21 and Sunday October 23/Monday October 24 2022.",
+  },
+  {
+    title: "QLD, NSW, VIC, ACT Rain & Storm Outlook October 18-22",
+    id: "OOrBkJXvw14",
+    details:
+      "Widespread rain & storms are again forecast across QLD, NSW, VIC & ACT as a low & trough move slowly East over these areas between October 18 & 22. Issued Tuesday October 18th 2022",
+  },
+];
+---
+
+<Layout title={`Members TV |  Higgins Storm Chasing`}>
+  <div class="mx-auto max-w-5xl py-8 px-4">
+    <h1 class="mb-4 text-3xl font-bold">Higgins Members TV</h1>
+    <hr />
+    {
+      videos.map((video) => (
+        <div class="mb-8 mt-6">
+          <h2 class="mb-2 text-xl font-bold">{video.title}</h2>
+          <p class="mb-4">{video.details}</p>
+          <div class="w-full">
+            <lite-youtube
+              videoid={video.id}
+              videotitle={video.title}
+              posterloading="eager"
+            />
+          </div>
+          <hr />
+        </div>
+      ))
+    }
+  </div>
+</Layout>
+<script
+  type="module"
+  src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.4.0/lite-youtube.js"
+></script>
